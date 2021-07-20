@@ -1,3 +1,7 @@
+{{ define "sb"}}
+{{ partial "sidebar.html" . }}
+{{ end }}
+
 {{ define "main" }}
 
 <!-- blog post -->
@@ -18,7 +22,7 @@
         </div>
       </div>
       <!-- sidebar -->
-      {{ partial "sidebar.html" . }}
+        {{- block "sb" . }}{{- end }}
       <!-- /sidebar -->
 
       <!-- pagination -->
@@ -31,3 +35,4 @@
 <!-- /blog post -->
 
 {{ end }}
+
