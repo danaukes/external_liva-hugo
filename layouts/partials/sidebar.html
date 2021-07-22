@@ -3,12 +3,12 @@
     <!-- Tags -->
     <div class="widget">
       <h4 class="widget-title">Tags</h4>
-      {{- if isset .Site.Taxonomies "dummy" }}
-      {{- if not (eq (len .Site.Taxonomies.dummy) 0) }}
+      {{- if isset .Site.Taxonomies "tags" }}
+      {{- if not (eq (len .Site.Taxonomies.tags) 0) }}
       <ul class="list-inline">
-        {{- range $name, $items := .Site.Taxonomies.dummy }}
+        {{- range $name, $items := .Site.Taxonomies.tags }}
         <li class="list-inline-item"><a class="d-block p-2 bg-primary text-white"
-            href="{{ `dummy/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | humanize }}</a></li>
+            href="{{ `tags/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | humanize }}</a></li>
         {{- end }}
       </ul>
       {{- end }}
