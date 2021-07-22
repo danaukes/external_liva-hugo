@@ -13,8 +13,9 @@ p, .paragraph {
   font-weight: 400;
   color: $text-color;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.4;
   font-family: $primary-font;
+  margin-bottom: 10px;
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
