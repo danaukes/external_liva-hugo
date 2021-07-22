@@ -46,7 +46,7 @@
 <section>
   <div class="container">
     <div class="row">
-      {{ range first 3 (where .Site.RegularPages "Type" "post")}}
+      {{ range first 3 ( where .Site.RegularPages "Type" "starred" )}}
       <div class="col-lg-4 small-post-border">
         <article class="media">
           {{ if .Params.Image }}

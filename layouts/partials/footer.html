@@ -23,11 +23,10 @@
 <footer class="text-capitalize">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 text-center mb-5">
-        <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}"></a>
+      <div class="col-12 border-top py-4 text-center ">
       </div>
       {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}         
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <div class="col-lg-4 col-sm-6 mb-5 text-center">
         <h6 class="mb-4">Contact Me</h6>
         <ul class="list-unstyled">
           {{ if .Site.Params.mobile }}
@@ -45,29 +44,15 @@
         </ul>
       </div>
       {{ end }}
-      <div class="col-lg-3 col-sm-6 mb-5">
-        <h6 class="mb-4">Social Contacts</h6>
+      <div class="col-lg-4 col-sm-6 mb-5 text-center">
+        <h6 class="mb-4">Social</h6>
         <ul class="list-unstyled">
           {{ range .Site.Params.social }}
           <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}">{{ .title }}</a></li>
           {{ end }}
         </ul>
       </div>
-      <div class="col-lg-3 col-sm-6 mb-5">
-        <h6 class="mb-4">Categories</h6>
-        {{- if isset .Site.Taxonomies "categories" }}
-        {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
-        <ul class="list-unstyled">
-          {{- range $name, $items := .Site.Taxonomies.categories }}
-          <li class="mb-3"><a class="text-dark"
-              href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | title | humanize }}</a>
-          </li>
-          {{- end }}
-        </ul>
-        {{- end }}
-        {{- end }}
-      </div>
-      <div class="col-lg-3 col-sm-6 mb-5">
+      <div class="col-lg-4 col-sm-6 mb-5 text-center">
         <h6 class="mb-4">Quick Links</h6>
         <ul class="list-unstyled">
           {{ range .Site.Menus.footer }}
@@ -75,7 +60,11 @@
           {{ end }}
         </ul>
       </div>
-      <div class="col-12 border-top py-4 text-center">
+      <div class="col-12 mb-5 text-center">
+        <a href="{{ .Site.BaseURL }}"><img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}"></a>
+      </div>
+
+      <div class="col-12 mb-5 text-center">
         {{ .Site.Params.copyright | markdownify }}
       </div>
     </div>
