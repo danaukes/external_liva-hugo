@@ -4,17 +4,43 @@
 
 {{ define "main" }}
 
-<!-- blog post -->
 <section class="section-sm">
   <div class="container">
     <h1>{{ .Title }}</h1>
+    <article>{{ .Content }}</article>
+  </div>
+</section>
 
-    {{ .Content }}
+{{ $folders:=(where .Pages ".Type" "=" "directory")}}
+{{ if (gt (len ($folders)) 0)}}
+<!-- featured post -->
+<section class="section-sm">
+  <div class="container">
+   <h2>Sections</h2>
+    <div class="row justify-content-center">
+      <div class="col-10 featured-post-slider">
+        <!-- slider item -->
+        {{ range $folders }}
+        {{ .Render "post_top" }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /featured post -->
+
+{{end}}
+
+<!-- blog post -->
+<section class="section-sm">
+  <div class="container">
     <div class="row">
       <div class="col-lg-8 mb-5 mb-lg-0">
-
+    {{ if (gt (len ($folders)) 0)}}
+      <h2> Posts </h2>
+      {{end}}
         <div class="row">
-          {{ $paginator := .Paginate .Pages }}
+          {{ $paginator := .Paginate (where .Pages ".Type" "!=" "directory") }}
           {{ range $paginator.Pages }}
           {{ .Render "post" }}
           {{ end }}
