@@ -1,8 +1,6 @@
       <div class="col-lg-4 small-post-border">
         <article class="media">
-          {{ if .Params.Image }}
-          <div class="recent-post-thumb mr-3" style="background-image: url('{{ .Params.Image | absURL }}');"></div>
-          {{ end }}
+          <div class="recent-post-thumb mr-3" style="background-image: url('{{ .Params.Image | default .Site.Params.default_image | absURL }}');"></div>
           <div class="media-body">
             <div class="mb-3 post-meta">
               <span>By {{if .Params.Author}}{{ .Params.Author }}{{else}}{{.Site.Params.Author}}{{end}}</span>
