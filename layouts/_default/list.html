@@ -11,16 +11,16 @@
   </div>
 </section>
 
-{{ $folders:=(where .Pages ".Type" "=" "directory")}}
-{{ if (gt (len ($folders)) 0)}}
+{{ $featured:=(where .Pages ".Type" "=" "featured")}}
+{{ if (gt (len ($featured)) 0)}}
 <!-- featured post -->
 <section class="section-sm">
   <div class="container">
-   <h2>Sections</h2>
+   <h2>Featured</h2>
     <div class="row justify-content-center">
       <div class="col-10 featured-post-slider">
         <!-- slider item -->
-        {{ range $folders }}
+        {{ range $featured }}
         {{ .Render "post_top" }}
         {{ end }}
       </div>
@@ -28,7 +28,21 @@
   </div>
 </section>
 <!-- /featured post -->
+{{end}}
 
+{{ $starred:= first 3 (where .Pages ".Type" "=" "starred")}}
+{{ if (gt (len ($starred)) 0)}}
+<!-- recent post -->
+<section>
+  <div class="container">
+   <h2>Highlighted</h2>
+    <div class="row">
+        {{ range $starred }}
+      {{ .Render "post_4" }}
+      {{ end }}
+    </div>
+  </div>
+</section>
 {{end}}
 
 <!-- blog post -->
@@ -36,7 +50,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mb-5 mb-lg-0">
-    {{ if (gt (len ($folders)) 0)}}
+    {{ if (or (gt (len ($featured)) 0) (gt (len ($starred)) 0))}}
       <h2> Posts </h2>
       {{end}}
         <div class="row">
