@@ -65,8 +65,17 @@
       </div>
 
       <div class="col-12 mb-5 text-center">
-        {{ .Site.Params.copyright | markdownify }}
+        <p>{{ .Site.Params.copyright | markdownify }}</p>
+        {{ if .Site.Params.github_repo }}
+        {{ if .Site.Params.github_edit_branch  }}
+        {{ if .File.Path }}
+        {{ $fp:=.File.Path }}
+        <p><a href="{{ .Site.Params.github_repo }}/edit/{{ .Site.Params.github_edit_branch  }}/content/{{replace $fp "\\" "/"}}"> Edit this Page</a></p>
+        {{ end }}
+        {{ end }}
+        {{ end }}
       </div>
+
     </div>
   </div>
 </footer>
