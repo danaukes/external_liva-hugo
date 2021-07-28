@@ -30,7 +30,7 @@
 <!-- /featured post -->
 {{end}}
 
-{{ $starred:= first 3 (where .Pages ".Type" "=" "starred")}}
+{{ $starred:= (where .Pages ".Type" "=" "starred")}}
 {{ if (gt (len ($starred)) 0)}}
 <!-- recent post -->
 <section>
@@ -54,7 +54,7 @@
       <h2> Posts </h2>
       {{end}}
         <div class="row">
-          {{ $paginator := .Paginate (where .Pages ".Type" "!=" "directory") }}
+          {{ $paginator := .Paginate ( where (where .Pages ".Type" "!=" "featured") ".Type" "!=" "starred" ) }}
           {{ range $paginator.Pages }}
           {{ .Render "post" }}
           {{ end }}
