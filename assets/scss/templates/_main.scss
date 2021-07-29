@@ -1,8 +1,10 @@
 /* card */
 .card {
-  border: 0;
-  border-radius: 0;
-
+  border: .5rem;
+  border-radius: .5rem;
+  padding: 1rem;
+  border-width: 2px;
+  border-style: solid;
   &-header,
   &-footer,
   &-img,
@@ -10,6 +12,14 @@
     border: 0;
     border-radius: 0;
   }
+}
+
+.card-body{
+ padding-bottom: 0rem;
+}
+
+.list-inline{
+ margin-bottom: 0rem;
 }
 
 /* /card */
@@ -114,10 +124,7 @@
 .recent-post-thumb {
   height: 100px;
   width: 100px;
-  border-radius: 50%;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  border-radius: 25%;
 }
 
 .small-post-border {
@@ -132,6 +139,20 @@
     }
   }
 }
+
+.med-post-border {
+  &:not(:last-child) {
+
+    @include desktop {
+      border-right: 0;
+      border-bottom: 1px solid $border-color;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+
 
 /* widget */
 .widgets {

@@ -1,5 +1,5 @@
 <div class="col-md-6 mb-4">
-    <article class="card">
+    <article class="card h-100 bg-light">
         {{ if .Params.Image }}
         <img src="{{ .Params.Image | absURL }}" class="card-img-top" alt="{{ .Title | markdownify }}">
         {{ else }}
