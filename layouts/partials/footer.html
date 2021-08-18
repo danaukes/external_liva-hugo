@@ -25,7 +25,7 @@
     <div class="row justify-content-center">
       <div class="col-12 border-top py-4 text-center ">
       </div>
-      {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}         
+      {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}
       <div class="col-lg-4 col-sm-6 mb-5 text-center">
         <h6 class="mb-4">Contact Me</h6>
         <ul class="list-unstyled">
@@ -33,10 +33,10 @@
           <li class="mb-3"><a class="text-dark" href="tel:{{ .Site.Params.mobile }}"><i
                 class="ti-mobile mr-3 text-primary"></i>{{ .Site.Params.mobile }}</a></li>
           {{ end }}
-          {{ if .Site.Params.location }}           
+          {{ if .Site.Params.location }}
           <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>{{ .Site.Params.location }}</li>
           {{ end }}
-          {{ if .Site.Params.email }}           
+          {{ if .Site.Params.email }}
           <li class="mb-3"><a class="text-dark" href="mailto:{{ .Site.Params.email }}"><i
                 class="ti-email mr-3 text-primary"></i>{{ .Site.Params.email }}</a>
           {{ end }}
@@ -45,7 +45,7 @@
       </div>
       {{ end }}
       <div class="col-lg-4 col-sm-6 mb-5 text-center">
-        <h6 class="mb-4">Social</h6>
+        <h6 class="mb-4">External</h6>
         <ul class="list-unstyled">
           {{ range .Site.Params.social }}
           <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}">{{ .title }}</a></li>

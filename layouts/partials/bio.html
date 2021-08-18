@@ -2,9 +2,13 @@
       {{ with .Site.GetPage "/about" }}
       <h4 class="widget-title">{{ .Title | markdownify }}</h4>
       {{ if .Params.Image }}
-      <img src="{{ .Params.Image | absURL }}" alt=""
-        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
-      {{ end }}
+      <img src="{{ .Params.Image | absURL }}" class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4" alt="">
+      {{ else }}
+      {{ if .Params.Icon }}
+      <div class="text-center" style="font-size:5rem;line-height:1;"><i class="{{.Params.icon }}"></i></div>
+      {{else}}
+      <div class="text-center" style="font-size:5rem;line-height:1;"><i class="{{.Site.Params.default_icon}}"></i></div>
+      {{ end }}{{ end }}
       <p>{{ .Summary }}</p>
       <a href="{{ .Permalink }}" class="btn btn-outline-primary">Know More</a>
       {{ end }}
