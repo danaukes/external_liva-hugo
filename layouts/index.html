@@ -54,9 +54,9 @@
       <h2> Posts</h2>
       {{end}}
         <div class="row">
-          {{ $paginator := .Paginate (where ( where (where .Pages ".Type" "!=" "featured") ".Type" "!=" "starred" ) "Params.show_front" "!=" false) }}
+          {{ $paginator := .Paginate (where ( where ( where .Site.RegularPages ".Type" "!=" "featured") ".Type" "!=" "starred" ) "Params.show_front" "!=" false ) 10 }}
           {{ range $paginator.Pages }}
-          {{ .Render "post" }}
+          {{ .Render "post_little" }}
           {{ end }}
         </div>
         <!-- pagination -->

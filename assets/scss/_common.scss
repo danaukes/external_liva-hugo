@@ -209,3 +209,9 @@ textarea.form-control{
 a.bg-primary:focus, a.bg-primary:hover, button.bg-primary:focus, button.bg-primary:hover{
   background: $primary-color !important;
 }
+
+.list-inline-item {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: $primary-font;
+}
