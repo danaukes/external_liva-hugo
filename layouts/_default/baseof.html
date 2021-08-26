@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
-    {{- partial "head.html" . -}}
+    <head>
+      <meta charset="utf-8">
+      <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+      {{- partial "head.html" . -}}
+    </head>
+
     <body>
         {{- partial "preloader.html" . -}}
         {{- partial "header.html" . -}}
