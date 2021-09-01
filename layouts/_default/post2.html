@@ -12,16 +12,15 @@
     </div>
     <div class="media-body">
       <div class="mb-3 post-meta">
+        <a href="{{ .Permalink }}" class="h5 d-block mb-3">{{ .Title | markdownify }}</a>
         <span>By {{if .Params.Author}}{{ .Params.Author }}{{else}}{{.Site.Params.Author}}{{end}}</span>
         {{ if .PublishDate }}
         <span class="border-bottom border-primary px-2 mx-1"></span>
         <span>{{ .PublishDate.Format "02 Jan 2006" }}</span>
         {{ end }}
+        <p>{{ .Summary | markdownify }}</p>
+        <a href="{{ .Permalink }}" class="btn btn-outline-primary">read more</a>
       </div>
-      <a href="{{ .Permalink }}" class="h5 d-block mb-3">{{ .Title | markdownify }}</a>
-      <p>{{ .Summary | markdownify }}</p>
-
-      <a href="{{ .Permalink }}" class="btn btn-outline-primary">read more</a>
     </div>
   </article>
 </div>
