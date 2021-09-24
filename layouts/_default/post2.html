@@ -1,4 +1,4 @@
-<div class="col-lg-4 mb-5">
+<div class="col-lg-4 pb-2">
   <article class="media">
     <div class="mr-3">
         {{ if .Params.Image }}
@@ -11,7 +11,7 @@
         {{ end }}{{ end }}
     </div>
     <div class="media-body">
-      <div class="mb-3 post-meta">
+      <div class="post-meta">
         <a href="{{ .Permalink }}" class="h5 d-block mb-3">{{ .Title | markdownify }}</a>
         <span>By {{if .Params.Author}}{{ .Params.Author }}{{else}}{{.Site.Params.Author}}{{end}}</span>
         {{ if .PublishDate }}
