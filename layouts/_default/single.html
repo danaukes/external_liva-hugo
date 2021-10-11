@@ -2,9 +2,26 @@
 
 {{ define "main" }}
 
+{{ $a:=split .File.Path "."}}
+{{ $b:=index $a 0 }}
+{{ $dirs:=split $b "/"}}
+{{$l:=len $dirs}}
+{{$dir2:= slice "" }}
+
 <section class="section-sm">
   <div class="container">
-    <div class="row">
+
+
+      <p>
+      {{ range $index, $item := $dirs }}
+      {{$dir2 = $dir2 | append $item }}
+      {{ $curpath:=delimit $dir2 "/"}}
+      <a href="{{$curpath}}">{{.}}</a>
+      {{ if (eq $index (sub $l 1)) }}{{else }} | {{end}}
+      {{ end }}
+      </p>
+
+      <div class="row">
       <div class="col-lg-8 mx-auto">
         <h2>{{ .Title | markdownify }}</h2>
         {{ range .Params.Categories }}
