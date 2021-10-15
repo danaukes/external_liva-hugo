@@ -12,14 +12,14 @@
   <div class="container">
 
 
-      <p>
+      <div class="text-center">
       {{ range $index, $item := $dirs }}
       {{$dir2 = $dir2 | append $item }}
       {{ $curpath:=delimit $dir2 "/"}}
       <a href="{{ if (lt $index (sub $l 1)) }}{{$curpath}}{{else}}./{{end}}">{{.}}</a>
-      {{ if (lt $index (sub $l 1)) }} | {{end}}
+      {{ if (lt $index (sub $l 1)) }} <i class="ti-arrow-right"></i>  {{end}}
       {{ end }}
-      </p>
+      </div>
 
       <div class="row">
       <div class="col-lg-8 mx-auto">
