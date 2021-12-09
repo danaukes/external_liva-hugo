@@ -5,8 +5,9 @@
 {{ $a:=split .File.Path "."}}
 {{ $b:=index $a 0 }}
 {{ $dirs:=split $b "/"}}
-{{$l:=len $dirs}}
+{{$m:=len $dirs}}
 {{$dir2:= slice "" }}
+{{$l:=cond (eq (index $dirs (sub $m 1)) "index") (sub $m 1) $m}}
 
 <section class="section-sm">
   <div class="container">
@@ -14,11 +15,13 @@
 
       <div class="text-center">
       {{ range $index, $item := $dirs }}
+      {{ if (lt $index $l)}}
       {{$dir2 = $dir2 | append $item }}
       {{ $curpath:=delimit $dir2 "/"}}
       <a href="{{ if (lt $index (sub $l 1)) }}{{$curpath}}{{else}}./{{end}}">{{.}}</a>
       {{ if (lt $index (sub $l 1)) }} <i class="ti-arrow-right"></i>  {{end}}
       {{ end }}
+      {{end}}
       </div>
 
       <div class="row">
