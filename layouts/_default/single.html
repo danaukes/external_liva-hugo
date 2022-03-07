@@ -2,27 +2,16 @@
 
 {{ define "main" }}
 
-{{ $a:=split .File.Path "."}}
-{{ $b:=index $a 0 }}
-{{ $dirs:=split $b "/"}}
-{{$l:=len $dirs}}
-{{$dir2:= slice "" }}
-
 <section class="section-sm">
   <div class="container">
 
 
-      <div class="text-center">
-      {{ range $index, $item := $dirs }}
-      {{$dir2 = $dir2 | append $item }}
-      {{ $curpath:=delimit $dir2 "/"}}
-      <a href="{{ if (lt $index (sub $l 1)) }}{{$curpath}}{{else}}./{{end}}">{{.}}</a>
-      {{ if (lt $index (sub $l 1)) }} <i class="ti-arrow-right"></i>  {{end}}
-      {{ end }}
-      </div>
 
       <div class="row">
       <div class="col-lg-8 mx-auto">
+
+      {{ partial "breadcrumbs.html" . }}
+
         <h2>{{ .Title | markdownify }}</h2>
         {{ range .Params.Categories }}
         <a href="{{ `categories/` | relLangURL }}{{ . | urlize | lower }}"
