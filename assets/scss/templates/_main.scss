@@ -14,6 +14,12 @@
   }
 }
 
+
+.breadcrumb-item+.breadcrumb-item::before {
+ content:">"
+}
+
+
 .card-body{
  padding-bottom: 0rem;
 }
