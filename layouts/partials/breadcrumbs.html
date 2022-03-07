@@ -6,7 +6,7 @@
 {{$l:=cond (eq (index $dirs (sub $m 1)) "index") (sub $m 1) $m}}
 
 <div class="text-center">
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
 {{ range $index, $item := $dirs }}
 {{ if (lt $index $l)}}
