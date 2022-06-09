@@ -47,6 +47,12 @@
 
         {{ if .Site.Params.search.enable }}
         {{ "<!-- search -->" | safeHTML }}
+        <form action="{{ .Site.BaseURL }}/search" class="d-flex">
+        <input class="form-control me-2"  id="search-query"  name="s" type="s" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success"  type="submit"><i class="ti-search text-dark"></i></button>
+      </form>
+
+<!--
         <div class="search pl-lg-4">
           <button id="searchOpen" class="search-btn"><i class="ti-search"></i></button>
           <div class="search-wrapper">
@@ -56,6 +62,8 @@
             <button id="searchClose" class="search-close"><i class="ti-close text-dark"></i></button>
           </div>
         </div>
+-->
+
         {{ end }}
 
         {{ if .Site.Params.navButton.enable }}
