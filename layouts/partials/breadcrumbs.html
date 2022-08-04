@@ -1,22 +1,18 @@
-{{ $z:= path.Ext .File.Path}}
-{{ $a:=split .File.Path $z}}
-{{ $b:=index $a 0 }}
-{{ $dirs:=split $b "/"}}
-{{$m:=len $dirs}}
-{{$dir2:= slice "" }}
-{{$l:=cond (eq (index $dirs (sub $m 1)) "index") (sub $m 1) $m}}
-
 <div class="text-center">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-{{ range $index, $item := $dirs }}
-{{ if (lt $index $l)}}
-{{$dir2 = $dir2 | append $item }}
-{{ $curpath:=delimit $dir2 "/"}}
-{{ if (lt $index (sub $l 1)) }}<li class="breadcrumb-item"><a href="{{ if (lt $index (sub $l 1)) }}{{$curpath}}{{else}}./{{end}}">{{.}}</a></li>
-{{ else }}<li class="breadcrumb-item active"  aria-current="page">{{.}}</li>{{end}}
-{{ end }}
-{{ end }}
-  </ol>
+  {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+</ol>
 </nav>
 </div>
+
+{{ define "breadcrumbnav" }}
+{{ if .p1.Parent }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+<li class="breadcrumb-item{{ if eq .p1 .p2 }} active{{ end }}"><a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a></li>
+{{ end }}
+
+
