@@ -1,4 +1,5 @@
-{{ $a:=split .File.Path "."}}
+{{ $z:= path.Ext .File.Path}}
+{{ $a:=split .File.Path $z}}
 {{ $b:=index $a 0 }}
 {{ $dirs:=split $b "/"}}
 {{$m:=len $dirs}}
