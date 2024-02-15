@@ -67,10 +67,14 @@
       <div class="col-12 mb-5 text-center">
         <p>{{ .Site.Params.copyright | markdownify }}</p>
         {{ if .Site.Params.github_repo }}
+        {{ $gr:=.Site.Params.github_repo }}
+        
         {{ if .Site.Params.github_edit_branch  }}
-        {{ if .File.Path }}
-        {{ $fp:=.File.Path }}
-        <p><a href="{{ .Site.Params.github_repo }}/edit/{{ .Site.Params.github_edit_branch  }}/content/{{replace $fp "\\" "/"}}"> Edit this Page</a></p>
+        {{ $eb:=.Site.Params.github_edit_branch  }}
+
+        {{ with .File }}
+        {{ $fp2:=.Path }}
+        <p><a href="{{ $gr }}/edit/{{ $eb  }}/content/{{replace $fp2 "\\" "/"}}"> Edit this Page</a></p>
         {{ end }}
         {{ end }}
         {{ end }}
