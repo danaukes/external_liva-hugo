@@ -274,27 +274,6 @@
     }
   }
 
-  ul {
-    padding-left: 0;
-
-    li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 6px;
-      list-style-type: none;
-
-      &::before {
-        position: absolute;
-        content: "\e65d";
-        font-family: $icon-font;
-        font-size: 14px;
-        left: 0;
-        top: 1px;
-        color: $primary-color;
-        transition: .3s ease;
-      }
-    }
-  }
 
   table {
     text-align: left;
